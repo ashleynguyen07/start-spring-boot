@@ -36,7 +36,7 @@ public class DemoRestController {
         return theStudents.get(studentId);
     }
 
-    @ExceptionHandler
+    @ExceptionHandler  // exception not found
     public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException ex) {
         StudentErrorResponse error = new StudentErrorResponse();
 
@@ -47,4 +47,14 @@ public class DemoRestController {
         return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler   // exception catch all
+    public ResponseEntity<StudentErrorResponse> handleException(Exception ex) {
+        StudentErrorResponse error = new StudentErrorResponse();
+
+        error.setStatus(HttpStatus.BAD_REQUEST.value());
+        error.setMessage("Student ID only a number!");
+        error.setTimeStamp(System.currentTimeMillis());
+
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
 }
