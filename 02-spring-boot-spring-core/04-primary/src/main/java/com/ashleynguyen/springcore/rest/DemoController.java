@@ -12,7 +12,7 @@ public class DemoController {
     private Coach myCoach;
 
     @Autowired // create an injection
-    public DemoController(Coach myCoach) {
+    public DemoController(@Qualifier("footballCoach") Coach myCoach) {
         this.myCoach = myCoach;
     }
     @GetMapping("/getDailyWorkout")
