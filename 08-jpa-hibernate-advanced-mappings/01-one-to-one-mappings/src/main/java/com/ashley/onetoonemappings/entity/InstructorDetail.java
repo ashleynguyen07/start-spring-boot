@@ -16,6 +16,10 @@ public class InstructorDetail {
     @Column(name = "hobby")
     private  String hobby;
 
+    // one <--> one = instructor <--> instructor detail
+    @OneToOne(mappedBy = "instructorDetailId", cascade = CascadeType.ALL)
+    private Instructor instructor;
+
     public InstructorDetail() {
     }
 
