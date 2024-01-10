@@ -18,8 +18,30 @@ public class Application {
 	@Bean
 	public CommandLineRunner cmdLineRunner(AppDAO appDAO) {
 		return runner -> {
-			createInstructor(appDAO);
+			//createInstructor(appDAO);
+			//findInstructorById(appDAO);
+			//deleteInstructorById(appDAO);
 		};
+	}
+
+	private void deleteInstructorById(AppDAO appDAO) {
+		int id = 2;
+		appDAO.deleteById(id);
+		System.out.println("Deleted instructor ID " + id);
+	}
+
+	private void findInstructorById(AppDAO appDAO) {
+		int id = 2;
+		System.out.println("Finding instructor ID: " + id);
+
+		Instructor instructor = appDAO.findById(id);
+		if(instructor == null) {
+			System.out.println("Not found instructor ID: " + id);
+		} else {
+			System.out.println("Instructor: " + instructor.toString());
+			System.out.println("Instructor Details: " + instructor.getInstructorDetailId());
+		}
+
 	}
 
 	private void createInstructor(AppDAO appDAO) {
