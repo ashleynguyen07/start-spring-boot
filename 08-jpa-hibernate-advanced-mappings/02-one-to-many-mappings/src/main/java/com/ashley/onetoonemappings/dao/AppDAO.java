@@ -3,6 +3,8 @@ package com.ashley.onetoonemappings.dao;
 import com.ashley.onetoonemappings.entity.Course;
 import com.ashley.onetoonemappings.entity.Instructor;
 
+import java.util.List;
+
 public interface AppDAO {
 
     // instructor
@@ -14,5 +16,6 @@ public interface AppDAO {
     void saveCourse(Course course);
     Course findCourseById(Integer id);
     void deleteCourseById(Integer id);
+    List<Course> findCourseByInstructorById(Integer id);
 
 }

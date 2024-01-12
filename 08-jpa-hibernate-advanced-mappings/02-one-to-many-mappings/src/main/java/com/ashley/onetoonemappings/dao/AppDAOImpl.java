@@ -4,9 +4,12 @@ import com.ashley.onetoonemappings.entity.Course;
 import com.ashley.onetoonemappings.entity.Instructor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 public class AppDAOImpl implements AppDAO{
@@ -52,6 +55,17 @@ public class AppDAOImpl implements AppDAO{
     public void deleteCourseById(Integer id) {
         Course course = entityManager.find(Course.class, id);
         entityManager.remove(course);
+    }
+
+    @Override
+    public List<Course> findCourseByInstructorById(Integer id) {
+        // create query
+        TypedQuery<Course> query = entityManager.createQuery("From Course WHERE instructor.id = :data", Course.class);
+        query.setParameter("data", id);
+
+        // execute query
+        List<Course> course = query.getResultList();
+        return course;
     }
 
 

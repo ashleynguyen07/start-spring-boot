@@ -31,7 +31,7 @@ public class Instructor {
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetailId;
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "instructorId", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
+    @OneToMany(mappedBy = "instructor", cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Course> courses;
 
     public List<Course> getCourses() {
@@ -48,7 +48,7 @@ public class Instructor {
             courses = new ArrayList<>();
         }
         courses.add(course);
-        course.setInstructorId(this);
+        course.setInstructor(this);
     }
 
     public Instructor() {
