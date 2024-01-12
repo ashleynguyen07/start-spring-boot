@@ -1,5 +1,6 @@
 package com.ashley.onetoonemappings.dao;
 
+import com.ashley.onetoonemappings.entity.Course;
 import com.ashley.onetoonemappings.entity.Instructor;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
@@ -33,6 +34,24 @@ public class AppDAOImpl implements AppDAO{
     public void deleteById(Integer id) {
         Instructor instructor = entityManager.find(Instructor.class, id);
         entityManager.remove(instructor);
+    }
+
+    @Override
+    @Transactional
+    public void saveCourse(Course course) {
+        entityManager.persist(course);
+    }
+
+    @Override
+    public Course findCourseById(Integer id) {
+        return entityManager.find(Course.class, id);
+    }
+
+    @Override
+    @Transactional
+    public void deleteCourseById(Integer id) {
+        Course course = entityManager.find(Course.class, id);
+        entityManager.remove(course);
     }
 
 
