@@ -26,8 +26,38 @@ public class Application {
 			//deleteInstructorById(appDAO);
 			//createCourse(appDAO);
 			//findInstructorWithCourse(appDAO);
-			findCourseByInstructorId(appDAO);
+			//findCourseByInstructorId(appDAO);
+			//findInstructorByCourseId(appDAO);
+			updateInstructor(appDAO);
 		};
+	}
+
+	private void updateInstructor(AppDAO appDAO) {
+		// find instructor id
+		int id = 9;
+		Instructor instructor = appDAO.findById(id);
+		System.out.println("Finding instructor id " + id);
+
+		//update instructor
+		System.out.println("Updating....");
+		instructor.setEmail("hunghvh12@fpt.com");
+		appDAO.update(instructor);
+
+		System.out.println("Done!");
+	}
+
+	private void findInstructorByCourseId(AppDAO appDAO) {
+		// find course id
+		int id = 7;
+		Course course = appDAO.findCourseById(id);
+		System.out.println("Finding course id: " + id);
+
+		// find instructor by course
+		Instructor instructor = appDAO.findInstructorByJoinFetch(id);
+
+		// associate the object
+		course.setInstructor(instructor);
+		System.out.println("The associate instructor: " + course.getInstructor());
 	}
 
 	private void findCourseByInstructorId(AppDAO appDAO) {

@@ -45,7 +45,7 @@ public class Course {
         this.title = title;
     }
 
-    public Instructor getInstructorId() {
+    public Instructor getInstructor() {
         return instructor;
     }
 
