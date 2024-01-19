@@ -7,6 +7,16 @@
 
 ### Testing Access Token JWT:  
 **10-spring-boot-security**    
-**---02-spring-jwt-auth-new**    
+**---02-spring-jwt-auth-new**   
+
+    
+`1.` **Request Testing:**    
+GET - http://localhost:8080/api/v1/user    
+GET - http://localhost:8080/api/v1/admin    
+POST - http://localhost:8080/api/v1/auth/signin    
+POST - http://localhost:8080/api/v1/auth/signup    
+POST - http://localhost:8080/api/v1/auth/refresh
+
+
 
 
