@@ -3,5 +3,5 @@
 #### Configuration:    
 `1.` JDK: 17    
 `2.` Spring Boot: 3.2.1    
-`3.` Apche Maven: 3.9.2
+`3.` Apache Maven: 3.9.2
 
