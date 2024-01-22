@@ -9,6 +9,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 	@Autowired
@@ -19,15 +23,21 @@ public class Application implements CommandLineRunner {
 	}
 
 	public void run(String... args) {
-		User adminAccount = userRepository.findByRole(Role.ADMIN);
-		if (null == adminAccount) {
-			User user = new User();
-			user.setEmail("admin@gmail.com");
-			user.setFirstName("My");
-			user.setLastName("Nguyen");
-			user.setRole(Role.ADMIN);
-			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
-			userRepository.save(user);
-		}
+//		User adminAccount = userRepository.findByRole(Role.ADMIN);
+//		if (null == adminAccount) {
+//			User user = new User();
+//			user.setEmail("admin@gmail.com");
+//			user.setFirstName("My");
+//			user.setLastName("Nguyen");
+//			user.setRole(Role.ADMIN);
+//			user.setPassword(new BCryptPasswordEncoder().encode("admin"));
+//			userRepository.save(user);
+//		}
+
+//		List<User> userList = new ArrayList<>();
+//		userList = userRepository.findAll();
+//		for (User list : userList) {
+//			System.out.println(list);
+//		}
 	}
 }
